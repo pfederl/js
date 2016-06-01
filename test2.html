@@ -8,7 +8,7 @@ function load() {
   var xhttp = new XMLHttpRequest();
   var text = document.getElementById("text");
   text.innerHTML = "Loading...";
-  xhttp.open("GET", "joke2.txt", true);
+  xhttp.open("GET", "joke2.txt", false);
   xhttp.send();
   if (xhttp.readyState == 4 && xhttp.status == 200) {
       text.innerHTML = xhttp.responseText;
