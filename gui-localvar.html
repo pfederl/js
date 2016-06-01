@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2 id="text">This will change...</h2>
+<button type="button" id="button1">Change</button>
+<script>
+(function() {
+  var button = document.getElementById("button1");
+  var text = document.getElementById("text");
+  var counter = 0;
+  button.onclick = function main() {
+    counter = counter + 1;
+    text.innerHTML = "Counter: " + counter;
+  }
+})();
+</script>
+</body>
+</html>
