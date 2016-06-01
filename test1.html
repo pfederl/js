@@ -6,10 +6,16 @@
 <script>
 function load() {
   var xhttp = new XMLHttpRequest();
+  var text = document.getElementById("text");
+  text.innerHTML = "Loading...";
   xhttp.onreadystatechange = function() {
     if (xhttp.readyState == 4 && xhttp.status == 200) {
-      document.getElementById("text").innerHTML = xhttp.responseText;
+      text.innerHTML = xhttp.responseText;
     }
+    if (xhttp.readyState == 4 && xhttp.status != 200) {
+      text.innerHTML = "!!! ERROR !!!";
+    }
+
   };
   xhttp.open("GET", "someText.txt", true);
   xhttp.send();
