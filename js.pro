@@ -9,4 +9,8 @@ DISTFILES += \
     joke3.txt \
     buffer.js \
     gui-globalvar.html \
-    gui-localvar.html
+    gui-localvar.html \
+    gui-localvar2.html \
+    gui-localvar3.html \
+    jquery2.html \
+    joke4.txt

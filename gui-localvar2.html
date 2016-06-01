@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2 id="text1">Counter: 0</h2>
+<button type="button" id="button1">Counter ++</button>
+<h2 id="text2">Counter: 0</h2>
+<button type="button" id="button2">Counter ++</button>
+<h2 id="text3">Counter: 0</h2>
+<button type="button" id="button3">Counter ++</button>
+<script>
+function setupCounter(index) {
+    var button = document.getElementById("button" + index);
+    var text = document.getElementById("text" + index);
+    var counter = 0;
+    button.onclick = function main() {
+        counter = counter + 1;
+        text.innerHTML = "Counter: " + counter;
+    }
+}
+
+setupCounter(1);
+setupCounter(2);
+setupCounter(3);
+</script>
+</body>
+</html>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-<h2 id="text">This will change...</h2>
+<h2 id="text">Click to load a joke...</h2>
 <button type="button" onclick="load()">Load</button>
 <script>
 function load() {
@@ -15,7 +15,6 @@ function load() {
     if (xhttp.readyState == 4 && xhttp.status != 200) {
       text.innerHTML = "!!! ERROR !!!";
     }
-
   };
   xhttp.open("GET", "joke1.txt", true);
   xhttp.send();
