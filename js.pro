@@ -13,4 +13,6 @@ DISTFILES += \
     gui-localvar3.html \
     jquery2.html \
     joke4.txt \
-    jquery-promise.html
+    jquery-promise.html \
+    promiseTests.html \
+    promiseTests.js

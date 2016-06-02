@@ -65,3 +65,16 @@ function loadJoke() {
         }
     });
 }
+
+
+function() {
+    $.ajax({
+        url: "joke3.txt",
+    })
+    .done( function(result){
+      $("#text").html(result);
+    })
+    .fail( function(obj,status,textStatus) {
+       $("#text").html("Error:" + textStatus);
+    })
+}
