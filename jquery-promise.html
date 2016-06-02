@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2 id="text">Click to load a joke...</h2>
+<button>Load</button>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script>
+$("button").click(
+    function() {
+        $.ajax({
+            url: "joke3.txt",
+        })
+        .done( function(result){
+          $("#text").html(result);
+        })
+        .fail( function(obj,status,textStatus) {
+           $("#text").html("Error:" + textStatus);
+        })
+});
+</script>
+</body>
+</html>

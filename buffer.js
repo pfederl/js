@@ -53,3 +53,15 @@ setupCounter(3);
     setupCounter(2);
     setupCounter(3);
 })();
+
+function loadJoke() {
+    $.ajax({
+        url: "joke3.txt",
+        success: function(result) {
+            $("#text").html(result);
+        },
+        error: function(obj, status, textStatus) {
+            $("#text").html("Error:" + textStatus);
+        }
+    });
+}
