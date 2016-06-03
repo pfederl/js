@@ -7,15 +7,17 @@
 <script>
 $("button").click(
     function() {
-        $.ajax({
-            url: "joke3.txt",
-        })
-        .done( function(result){
-          $("#text").html(result);
-        })
-        .fail( function(obj,status,textStatus) {
-           $("#text").html("Error:" + textStatus);
-        })
+    var joke1 = $.ajax("joke1.txt");
+    var joke2 = $.ajax("joke2.txt");
+    var joke3 = $.ajax("joke3.txt");
+    var allJokes = $.when( joke1, joke2, joke3);
+    allJokes.then( function( data1, data2, data3) {
+       $("#text").html( data1[0] + "<p>" + data2[0] + "<p>" + data3[0] );
+       console.log( "All jokes", data1, data2, data3);
+    });
+    allJokes.fail( function() {
+        $("#text").html( "Error" );
+    });
 });
 </script>
 </body>

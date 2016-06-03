@@ -1,28 +1,37 @@
-var nSuccess = 0;
-var jokes = [];
+function get(url) {
+  // Return a new promise.
+  return new Promise(function(resolve, reject) {
+    // Do the usual XHR stuff
+    var req = new XMLHttpRequest();
+    req.open('GET', url);
 
-function showAllJokes() {
-    jokes.forEach(function(joke, ind){
-        console.log( "" + ind + ": " + joke);
-    });
+    req.onload = function() {
+      // This is called even on 404 etc
+      // so check the status
+      if (req.status == 200) {
+        // Resolve the promise with the response text
+        resolve(req.response);
+      }
+      else {
+        // Otherwise reject with the status text
+        // which will hopefully be a meaningful error
+        reject(Error(req.statusText));
+      }
+    };
+
+    // Handle network errors
+    req.onerror = function() {
+      reject(Error("Network Error"));
+    };
+
+    // Make the request
+    req.send();
+  });
 }
 
-function successCB(ind, joke) {
-    jokes[ind] = joke;
-    nSuccess ++;
+get('joke1.txt').then(function(response) {
+  console.log("Success!", response);
+}, function(error) {
+  console.error("Failed!", error);
+});
 
-    if( nSuccess === 3) {
-        showAllJokes();
-    }
-}
-
-$.ajax("joke1.txt", { success: successCB.bind(this,1) });
-$.ajax("joke2.txt", { success: successCB.bind(this,2) });
-$.ajax("joke3.txt", { success: successCB.bind(this,3) });
-
-
-var r1 = $.ajax( "joke1.txt");
-var r2 = $.ajax( "joke2.txt");
-var r3 = $.ajax( "joke3.txt");
-
-var allRs = $.when

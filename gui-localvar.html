@@ -2,16 +2,23 @@
 <html>
 <body>
 <h2 id="text">Counter: 0</h2>
-<button type="button" id="button1">Counter ++</button>
+<button id="button1">Counter ++</button>
 <script>
 (function() {
-  var button = document.getElementById("button1");
-  var text = document.getElementById("text");
-  var counter = 0;
-  button.onclick = function main() {
-    counter = counter + 1;
-    text.innerHTML = "Counter: " + counter;
-  }
+    function makeCounter() {
+        var count = 0;
+        return function() {
+            count = count + 1;
+            return count;
+        }
+    }
+
+    var button = document.getElementById("button1");
+    var text = document.getElementById("text");
+    var counter = makeCounter();
+    button.onclick = function main() {
+        text.innerHTML = "Counter: " + counter();
+    }
 })();
 </script>
 </body>
